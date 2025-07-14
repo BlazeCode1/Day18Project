@@ -31,7 +31,7 @@ public class UnSubscribersPassenger extends Passenger {
 
     @Override
     public void displayInfo() {
-        System.out.println("\n\nPassenger Name: " + super.getName());
+        System.out.println("\nPassenger Name: " + super.getName());
         System.out.println("Passenger Id: " + super.getID());
         System.out.println("Passenger Car & Route:\n " + super.getReservedCar());
         System.out.println("Passenger Has A Coupon: " + this.getCoupon());
