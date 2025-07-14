@@ -118,7 +118,6 @@ public class NewMain {
                                         }
                                         if(passengers.size() == 1){
                                             passengers.getFirst().reserveCar(cars.get(index));
-                                            cars.get(index).setMaxCapacity(cars.get(index).getMaxCapacity() - 1);
                                         }else{
                                             passengers.getLast().reserveCar(cars.get(index));
                                         }
