@@ -12,6 +12,7 @@ public class SubscribersPassenger extends Passenger {
 
         super.setReservedCar(car);
         super.setTripCost(car.getFixedRoute().getPrice() - (car.getFixedRoute().getPrice() * 0.5));
+        car.setMaxCapacity(car.getMaxCapacity()-1);
         }
 
 
@@ -20,6 +21,6 @@ public class SubscribersPassenger extends Passenger {
         System.out.println("\n\nPassenger Name: " + super.getName());
         System.out.println("Passenger Id: " + super.getID());
         System.out.println("Passenger Car & Route:\n " + super.getReservedCar());
-        System.out.println("Passenger Trip Cost: " + super.getTripCost());
+        System.out.println("Passenger Trip Cost: $" + super.getTripCost());
     }
 }

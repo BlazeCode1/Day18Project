@@ -56,6 +56,7 @@ public class NewMain {
                                 System.out.println("Input Max Capacity:");
                                 int capacity = sc.nextInt();
 
+
                                 cars.add(new Car(code, routes.get(index), capacity));
                                 sc.nextLine();
                                 System.out.println("Do you want to continue adding cars?(yes/no)");
@@ -88,43 +89,46 @@ public class NewMain {
 
                         switch (passengerChoice){
                             case 1:
-                                sc.nextLine();
-                                System.out.println("Your Name:");
-                                String name = sc.nextLine();
-                                System.out.println("ID:");
-                                String id = sc.nextLine();
-
-                                if (!cars.isEmpty()) {
-                                    System.out.println("Cars Available:(Choose index)");
-                                    for (int i = 0; i < cars.size(); i++) {
-                                        System.out.println(i +" : "+ cars.get(i));
-                                    }
-                                    int index = sc.nextInt();
+                                try {
                                     sc.nextLine();
-                                    System.out.println("Are you a Subscriber? (yes/no)");
-                                    String subscriber = sc.nextLine();
-                                    if(subscriber.contains("yes")){
-                                        passengers.add(new SubscribersPassenger(name,id));
-                                    }else{
-                                        System.out.println("Do you have a coupon? (yes/no)");
-                                        String coupon = sc.nextLine();
-                                        if (coupon.contains("yes")){
-                                            passengers.add(new UnSubscribersPassenger(name,id,true));
-                                        }else{
-                                            passengers.add(new UnSubscribersPassenger(name,id,false));
-                                        }
-                                    }
-                                    if(passengers.size() == 1){
-                                        passengers.getFirst().reserveCar(cars.get(index));
-                                    }else{
-                                        passengers.getLast().reserveCar(cars.get(index));
-                                    }
-                                    break;
-                                }else {
-                                    System.out.println("No Cars Available.");
-                                    break;
-                                }
+                                    System.out.println("Your Name:");
+                                    String name = sc.nextLine();
+                                    System.out.println("ID:");
+                                    String id = sc.nextLine();
 
+                                    if (!cars.isEmpty()) {
+                                        System.out.println("Cars Available:(Choose index)");
+                                        for (int i = 0; i < cars.size(); i++) {
+                                            System.out.println(i +" : "+ cars.get(i));
+                                        }
+                                        int index = sc.nextInt();
+                                        sc.nextLine();
+                                        System.out.println("Are you a Subscriber? (yes/no)");
+                                        String subscriber = sc.nextLine();
+                                        if(subscriber.contains("yes")){
+                                            passengers.add(new SubscribersPassenger(name,id));
+                                        }else{
+                                            System.out.println("Do you have a coupon? (yes/no)");
+                                            String coupon = sc.nextLine();
+                                            if (coupon.contains("yes")){
+                                                passengers.add(new UnSubscribersPassenger(name,id,true));
+                                            }else{
+                                                passengers.add(new UnSubscribersPassenger(name,id,false));
+                                            }
+                                        }
+                                        if(passengers.size() == 1){
+                                            passengers.getFirst().reserveCar(cars.get(index));
+                                            cars.get(index).setMaxCapacity(cars.get(index).getMaxCapacity() - 1);
+                                        }else{
+                                            passengers.getLast().reserveCar(cars.get(index));
+                                        }
+                                    }else {
+                                        System.out.println("No Cars Available.");
+                                    }
+                                } catch (IllegalStateException e) {
+                                    System.out.println(e.getMessage());
+                                }
+                                break;
 
 
                             case 2:

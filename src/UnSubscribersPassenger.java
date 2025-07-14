@@ -25,6 +25,7 @@ public class UnSubscribersPassenger extends Passenger {
             } else {
                 super.setTripCost(car.getFixedRoute().getPrice());
         }
+            car.setMaxCapacity(car.getMaxCapacity()-1);
     }
 
 
@@ -34,6 +35,6 @@ public class UnSubscribersPassenger extends Passenger {
         System.out.println("Passenger Id: " + super.getID());
         System.out.println("Passenger Car & Route:\n " + super.getReservedCar());
         System.out.println("Passenger Has A Coupon: " + this.getCoupon());
-        System.out.println("Passenger Trip Cost: " + super.getTripCost());
+        System.out.println("Passenger Trip Cost: $" + super.getTripCost());
     }
 }

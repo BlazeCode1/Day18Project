@@ -39,7 +39,7 @@ public class Route {
         return "Route[" +
                 " pickupAddress: '" + pickupAddress + '\'' +
                 ", destinationAddress: '" + destinationAddress + '\'' +
-                ", price: " + price +
+                ", price: $" + price +
                 ']';
     }
 
